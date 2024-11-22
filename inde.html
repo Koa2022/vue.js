@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ฟอร์มลงทะเบียน</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #app {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+      background-color: #f1f8e9;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #c5e1a5;
+    }
+
+    .result p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>ฟอร์มลงทะเบียน</h1>
+    <form @submit.prevent="register">
+      <div>
+        <label for="name">ชื่อ:</label>
+        <input type="text" id="name" v-model="name" placeholder="กรอกชื่อของคุณ" required />
+      </div>
+      <div>
+        <label for="email">อีเมล:</label>
+        <input type="email" id="email" v-model="email" placeholder="กรอกอีเมลของคุณ" required />
+      </div>
+      <button type="submit">ลงทะเบียน</button>
+    </form>
+
+    <div class="result" v-if="submitted">
+      <h2>ผลลัพธ์:</h2>
+      <p>ชื่อ: {{ name }}</p>
+      <p>อีเมล: {{ email }}</p>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        email: '',
+        submitted: false
+      },
+      methods: {
+        register() {
+          this.submitted = true; // แสดงผลลัพธ์เมื่อกดลงทะเบียน
+        }
+      }
+    });
+  </script>
+</body>
+</html>
